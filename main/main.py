@@ -1,4 +1,7 @@
+# 이미지 로드 함수
+
 import cv2
+import os
 
 def load_images(path):
     defects = {'A':0, 'B':1 , 'C':2}
@@ -24,6 +27,9 @@ def load_images(path):
 
         print("image count : ", len(image_list))
         return (images, labels)
+
+
+## 딥러닝 모델 구축
 
 import torch
 import os
