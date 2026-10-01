@@ -179,3 +179,10 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+
+# Wafer defect classifier: raw data & model outputs (large, not for git)
+main/data/train/*.pkl
+main/data/predict/**/*.pkl
+main/wafer_model_output/
+main/*_model_output/
+main/*_log.txt
