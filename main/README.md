@@ -6,6 +6,15 @@ WM-811K 데이터셋(웨이퍼맵, 0=배경/1=정상/2=불량)에서 라벨링�
 Center, Donut, Edge-Loc, Edge-Ring, Loc, Random, Scratch, Near-full, none)을 사용해
 CNN으로 불량 패턴을 분류합니다.
 
+## 추론 결과 미리보기
+
+라벨 없는 웨이퍼맵 638,507장(WM-811K 중 사람이 분류하지 않은 나머지 전체)에 대해
+학습된 모델로 추론한 결과입니다. `none`, `Edge-Ring`, `Center`처럼 학습 데이터가 많았던
+클래스는 신뢰도도 높고, `Loc`·`Scratch`는 test셋 평가에서도 약했던 클래스라 신뢰도가
+낮게 나옵니다 (`visualize_predictions.py`로 생성, `predict.py` 실행 후 재생성 가능).
+
+![예측 결과 분포 및 클래스별 신뢰도](assets/predictions_overview.png)
+
 ## 설치
 
 TensorFlow는 Python 3.14를 아직 지원하지 않으므로, Python 3.11 가상환경(`.venv`)을 사용합니다.
@@ -54,6 +63,12 @@ train/val/test 분할이 재현됩니다.)
 
 결과는 `wafer_model_output/predictions.csv`에 저장됩니다(`predictedLabel`, `confidence`,
 정답을 아는 경우 `trueLabel`도 포함).
+
+이 결과를 맨 위의 차트처럼 시각화하려면:
+
+```bash
+.venv\Scripts\python visualize_predictions.py --predictions wafer_model_output/predictions.csv --output assets/predictions_overview.png
+```
 
 ## 처리 과정
 
